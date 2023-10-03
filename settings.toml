@@ -1,0 +1,5 @@
+[default]
+FLASK_ADMIN_NAME = "Pydaria Admin"
+SECRET_KEY = "jadkfbsdkjbfbh"
+
+[production]
