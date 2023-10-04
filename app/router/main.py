@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.controllers.core import health_router
+from app.controllers.games import games_router
 
 app = FastAPI(
     title="Balance Manager Integration",
@@ -10,3 +11,4 @@ app = FastAPI(
 )
 
 app.include_router(health_router)
+app.include_router(games_router)

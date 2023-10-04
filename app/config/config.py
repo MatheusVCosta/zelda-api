@@ -7,6 +7,8 @@ class Settings(BaseSettings):
     app_name: str = "Teste"
     version: str = "1.0.0"
     app_env: str = "development"
+    zelda_api: str = "https://zelda.fanapis.com/api/"
+    firebase_uri: str = "https://zelda-guide-default-rtdb.firebaseio.com/"
     # database_url: str
     # certifix_url: str
     # certifix_token: str = "xxxxxxxxxxxxxxxx"
