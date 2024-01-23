@@ -4,6 +4,7 @@ from app.config.config import get_settings
 from app.services.zelda_api_connector import ZeldaAPIConnector
 import json
 import requests
+
 router = APIRouter(
     prefix="/games",
     tags=["games"],
@@ -15,11 +16,12 @@ router = APIRouter(
 def index():
     connector = ZeldaAPIConnector()
     games = connector.fetch_all_games()
-    url = f"{get_settings().firebase_uri}/games/.json"
     
+    url = f"{get_settings().firebase_uri}games/.json"
+    response = {}
     for game in games['data']:
         response = requests.post(url, data=json.dumps(game))
-        if response.status_code == 404:
+        if response.status_code >= 400:
             print("Some error")
         
-    return response
+    return response.text

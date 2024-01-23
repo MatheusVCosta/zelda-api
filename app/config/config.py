@@ -1,4 +1,4 @@
-from functools import lru_cache
+# from functools import lru_cache, lru
 
 from pydantic import BaseSettings
 
@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     version: str = "1.0.0"
     app_env: str = "development"
     zelda_api: str = "https://zelda.fanapis.com/api/"
-    firebase_uri: str = "https://zelda-guide-default-rtdb.firebaseio.com/"
+    firebase_uri: str = "https://zelda-guide.firebaseio.com"
     # database_url: str
     # certifix_url: str
     # certifix_token: str = "xxxxxxxxxxxxxxxx"
@@ -37,7 +37,7 @@ class Settings(BaseSettings):
 uses_test_env = False
 
 
-@lru_cache()
+# @lru_cach
 def get_settings():
     # if uses_test_env:
         # return TestSettings()
