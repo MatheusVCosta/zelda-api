@@ -9,11 +9,6 @@ class Settings(BaseSettings):
     app_env: str = "development"
     zelda_api: str = "https://zelda.fanapis.com/api/"
     firebase_uri: str = "https://zelda-guide.firebaseio.com"
-    # database_url: str
-    # certifix_url: str
-    # certifix_token: str = "xxxxxxxxxxxxxxxx"
-    # username_docs: str = "bm-integration"
-    # password_docs: str = "bm-integration-pass"
 
     class Config:
         env_file = ".env"

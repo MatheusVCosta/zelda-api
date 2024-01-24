@@ -10,8 +10,15 @@ class ZeldaAPIConnector:
         return get_settings().zelda_api
     
     @classmethod
-    def fetch_all_games(self):
-        full_url = "{0}/games?limit=1".format(self.base_ulr())
+    def fetch_all_games(
+        self,
+        params : list = None
+    ):
+        limit = 1
+        if params:
+            limit = params['limit']
+            
+        full_url = "{0}/games?limit={1}".format(self.base_ulr(), limit)
         return self.execute_request(full_url)
     
     @classmethod
@@ -20,13 +27,18 @@ class ZeldaAPIConnector:
         response = requests.get(url, headers=headers, timeout=5, verify=True)
 
         if response.status_code > 299:
-            warning_message = f"Certifix.request.get returning some error. Request_URL{ url } | Response_status={ response.status_code }"
-            print(warning_message)
+            response_message = {
+                "message" : f"request.get returning some error. Request_URL{ url }",
+                "status" : response.status_code
+            }
             if response.status_code == 404:
-                print(
-                    f"Not found Reques_URL={url} | Response_status={response.status_code}"
-                )
-                return None
-
+                response_message = {
+                    "message" : f"Not found Reques_URL={url}",
+                    "status" : response.status_code
+                }
+                
+            print(response_message["message"])
+            return response_message
+        
         return response.json()
     
