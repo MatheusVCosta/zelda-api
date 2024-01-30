@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from app.controllers.core import health_router
 from app.controllers.games import games_router
+from app.models import Game, Photo
 
 app = FastAPI(
     title="Balance Manager Integration",
